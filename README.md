@@ -24,6 +24,6 @@ Download the source code above either via git or the download-button as a zip fi
 
 Next, open the file `main.py` in your IDE.
 
-If you downloaded the branch `demo`, you can just hit the Run button in your IDE and enjoy a little demo.
+If you downloaded the branch `demo`, you can just hit the Run button in your IDE and enjoy a little demo. Here you can find some optional tasks.
 
-The `main` branch contains a skeleton with some empty functions you have to fill.
+The `main` branch contains some basic functionality, but you have to solve tasks to get the working dino game. To find them, use the search function and look for comments which contain the word `task`.
