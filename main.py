@@ -94,10 +94,9 @@ def handle_input():
   return jump_requested
 
 def remove_offscreen_cactus():
-  # remove cactus which are out of sight; "[:]" is necessary to operate on a copy to prevent new memory allocation which will invalidate the iterator
-  for c in cactus[:]:
-    if c.x < -c.width:
-      cactus.remove(c)
+  # remove cactus which are out of sight
+  # task: remove all cactus in the array "cactus" which are out of sight (left the screen on the left side)
+  pass
 
 def add_cactus(speed):
   # add cactus if necessary
@@ -106,22 +105,19 @@ def add_cactus(speed):
     last_cactus_pos = ground.width
     if(len(cactus) > 0):
       last_cactus_pos = cactus[-1].x
-    # define attributes of new cactus; use speed as parameter to prevent too narrow placement at high speed
-    cactus_x = last_cactus_pos + random.randrange(CACTUS_SIZE[0] + int(speed), CACTUS_SIZE[0] + int(5*speed))
-    cactus_y = ground.y - CACTUS_SIZE[1]
+    # define attributes of new cactus; hint: use speed as parameter to prevent too narrow placement at high speed
+    cactus_x = 0# task: calculate a random x coordinate (width) for a new cactus; you can use the given last_cactus_pos if it helps
+    cactus_y = 0# task: calculate the right y coordinate (height) for a new cactus (hint: it's for all the same)
     new_cactus = pygame.Rect((cactus_x, cactus_y), CACTUS_SIZE)
     # add new cactus
     cactus.append(new_cactus)
 
 def move_cactus(delta, speed):
-  for c in cactus:
-    c.x = c.x - speed * delta
-    print(c.x)
+  # task: move cactus from right to left with given speed
+  pass
 
 def check_for_cactus_collision():
-  for c in cactus:
-    if(dino.colliderect(c)):
-      return True
+  # task: return True if the dino collides with a cactus; hint: use the function dino.colliderect(x) to check if dino collides with x
   return False
 
 def move_dino(delta, fall_velocity, is_jumping):
