@@ -33,11 +33,11 @@ dino = pygame.Rect(DINO_START_POSITION, DINO_SIZE)
 dino_img = pygame.image.load("dino-20.png") # image is 20*20px
 dino_img = pygame.transform.scale(dino_img, DINO_SIZE)
 ground = pygame.Rect(0, window_size[1] / 2, window_size[0], window_size[1] / 2)
-# (optional) task: create ground image and uncomment the two following lines
+# (optional) task: create ground image and uncomment the two following lines; changes in draw_components function necessary as well (read comments there)
 #ground_img = pygame.image.load("ground.png")
 #ground_img = pygame.transform.scale(ground_img, (ground.width, ground.height))
 cactus = []
-# (optional) task: create cactus image and uncomment the two following lines
+# (optional) task: create cactus image and uncomment the two following lines; changes in draw_components function necessary as well (read comments there)
 #cactus_img = pygame.image.load("cactus.png")
 #cactus_img = pygame.transform.scale(cactus_img, CACTUS_SIZE)
 
