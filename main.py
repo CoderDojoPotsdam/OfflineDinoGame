@@ -119,7 +119,18 @@ def move_cactus(delta, speed):
 
 def check_for_cactus_collision():
   for c in cactus:
-    if(dino.colliderect(c)):
+    # easy way without calculation
+    #if(dino.colliderect(c)):
+    # using precalculated corners, [0] is x, [1] is y
+    #if(dino.topright[0] >= c.topleft[0] and
+    #  dino.topleft[0] <= c.topright[0] and
+    #  dino.bottomleft[1] >= c.topleft[1] and
+    #  dino.topleft[1] <= c.bottomleft[1]):
+    # manually calculate everything :)
+    if(dino.x + dino.width >= c.x and
+      dino.x <= c.x + c.width and
+      dino.y + dino.height >= c.y and
+      dino.y <= c.y + c.height):
       return True
   return False
 
