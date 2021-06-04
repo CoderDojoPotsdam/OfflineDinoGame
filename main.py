@@ -1,6 +1,13 @@
 import pygame
 import random
 
+### these tasks are necessary for a functional dino game:
+# 1. move_cactus
+# 2. add_cactus
+# 3. remove_offscreen_cactus
+# 4. collide_cactus
+
+# colors
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 RED = (255, 0, 0)
@@ -9,13 +16,6 @@ BLUE = (0, 0, 255)
 YELLOW = (255, 255, 0)
 
 pygame.init()
-
-window_size = [500, 500]
-
-screen = pygame.display.set_mode(window_size)
-pygame.display.set_caption("Diiiiiino")
-clock = pygame.time.Clock()
-fps = 60
 
 # define constants
 START_GAME_SPEED = 150
@@ -28,7 +28,14 @@ CACTUS_SIZE = (20, 30)
 DINO_START_POSITION = (50, 10)
 DINO_SIZE = (30, 40)
 
-# component initialization; todo: images
+# size of window
+window_size = [500, 500]
+screen = pygame.display.set_mode(window_size)
+pygame.display.set_caption("Diiiiiino")
+clock = pygame.time.Clock()
+fps = 60
+
+# component initialization
 dino = pygame.Rect(DINO_START_POSITION, DINO_SIZE)
 dino_img = pygame.image.load("dino-20.png") # image is 20*20px
 dino_img = pygame.transform.scale(dino_img, DINO_SIZE)
@@ -82,6 +89,36 @@ def main_loop():
     # draw all changes to screen
     draw_components(score)
 
+def remove_offscreen_cactus():
+  # remove cactus which are out of sight
+  # task: remove all cactus in the array "cactus" which are out of sight (left the screen on the left side)
+  pass
+
+def add_cactus(speed):
+  # add cactus if necessary
+  if(len(cactus) < 10):
+    # get position of last cactus to place new cactus behind it
+	# hint: you might want to calc position of last cactus
+    #last_cactus_pos = ?
+    # define attributes of new cactus; hint: use speed and last_cactus_pos as parameters to prevent too narrow placement at high speed
+    cactus_x = ground.width / 2 # task: calculate a random x coordinate (width) for a new cactus; you can use the given last_cactus_pos if it helps
+    cactus_y = 0 # task: calculate the right y coordinate (height) for a new cactus (hint: it's for all the same)
+    new_cactus = pygame.Rect((cactus_x, cactus_y), CACTUS_SIZE)
+    # add new cactus
+    cactus.append(new_cactus)
+
+def move_cactus(delta, speed):
+  # task: move cactus from right to left with given speed
+  pass
+
+def check_for_cactus_collision():
+  # task: return True if the dino collides with a cactus; hint: check for each cactus individually and use .x, .y, .height and .width
+  return False
+
+
+
+### NO MORE TASKS DOWN HERE ###
+
 def handle_input():
   # check keyboard input and window close signal
   jump_requested = False
@@ -92,33 +129,6 @@ def handle_input():
       if event.key == pygame.K_SPACE:
         jump_requested = True
   return jump_requested
-
-def remove_offscreen_cactus():
-  # remove cactus which are out of sight
-  # task: remove all cactus in the array "cactus" which are out of sight (left the screen on the left side)
-  pass
-
-def add_cactus(speed):
-  # add cactus if necessary
-  if(len(cactus) < 10):
-    # get position of last cactus to place new cactus behind it
-    last_cactus_pos = ground.width
-    if(len(cactus) > 0):
-      last_cactus_pos = cactus[-1].x
-    # define attributes of new cactus; hint: use speed as parameter to prevent too narrow placement at high speed
-    cactus_x = 0# task: calculate a random x coordinate (width) for a new cactus; you can use the given last_cactus_pos if it helps
-    cactus_y = 0# task: calculate the right y coordinate (height) for a new cactus (hint: it's for all the same)
-    new_cactus = pygame.Rect((cactus_x, cactus_y), CACTUS_SIZE)
-    # add new cactus
-    cactus.append(new_cactus)
-
-def move_cactus(delta, speed):
-  # task: move cactus from right to left with given speed
-  pass
-
-def check_for_cactus_collision():
-  # task: return True if the dino collides with a cactus; hint: use the function dino.colliderect(x) to check if dino collides with x
-  return False
 
 def move_dino(delta, fall_velocity, is_jumping):
   if(fall_velocity < 0):
