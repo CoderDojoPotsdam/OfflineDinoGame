@@ -116,7 +116,6 @@ def add_cactus(speed):
 def move_cactus(delta, speed):
   for c in cactus:
     c.x = c.x - speed * delta
-    print(c.x)
 
 def check_for_cactus_collision():
   for c in cactus:
